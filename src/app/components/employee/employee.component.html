@@ -1,0 +1,183 @@
+<div class="row">
+    <div class="col-md-4">
+        <h3>Employee Details Entry Form</h3>
+        <div class="outerDiv">
+            <form #form="ngForm"> 
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Name</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" placeholder="First Name" name="FirstName" required #fname="ngModel"  [(ngModel)]="employeeObj.FirstName" class="form-control"/>
+                    <div *ngIf="fname.touched">
+                        <span class="text-danger font-weight-bold"    *ngIf="fname.errors?.['required']"> Required</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" placeholder="Last Name" required name="LastName" #LastName="ngModel" [(ngModel)]="employeeObj.LastName" class="form-control"/>
+                    <div *ngIf="LastName.touched">
+                        <span class="text-danger" *ngIf="LastName.errors?.['required']"> Required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Technology</label>
+                </div>
+                <div class="col-md-7">
+                    <input type="text" placeholder="Technology" name="Technology" #Technology="ngModel" required [(ngModel)]="employeeObj.Technology" class="form-control"/>
+                    <div *ngIf="Technology.touched">
+                        <span class="text-danger" *ngIf="Technology.errors?.['required']"> Required</span>
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Designation</label>
+                </div>
+                <div class="col-md-7">
+                    <input type="text" placeholder="Designation" name="Designation" #Designation="ngModel" required [(ngModel)]="employeeObj.Designation" class="form-control"/>
+                    <div *ngIf="Designation.touched">
+                        <span class="text-danger" *ngIf="Designation.errors?.['required']"> Required</span>
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Skills</label>
+                </div>
+                <div class="col-md-7">
+                    <select required    name="Skill" #Skill="ngModel"  [(ngModel)]="employeeObj.Skill" class="form-control">
+                        <option selected value="">Select Skill</option>
+                        <option>Dot Net</option>
+                        <option>Angular</option>
+                        <option>Java</option>
+                    </select>
+                    <div *ngIf="Skill.touched">
+                        <span class="text-danger" *ngIf="Skill.errors?.['required']"> Required</span>
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label >Core Expertise In</label>
+                </div>
+                <div class="col-md-7">
+                    <input type="text" placeholder="Core Expertise" name="Core" #Core="ngModel" required [(ngModel)]="employeeObj.Core" class="form-control"/>
+                    <div *ngIf="Core.touched">
+                        <span class="text-danger" *ngIf="Core.errors?.['required']"> Required</span>
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Certifications If Any</label>
+                </div>
+                <div class="col-md-7">
+                    <input type="radio" value="Yes"  name="IsCertification" [(ngModel)]="employeeObj.IsCertification"/> Yes
+                    <input type="radio"  value="No" name="IsCertification" [(ngModel)]="employeeObj.IsCertification"/> No
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    
+                </div>
+                <div class="col-md-7">
+                    <input type="text" placeholder="Certification" [disabled]="employeeObj.IsCertification == 'No' || employeeObj.IsCertification == ''"    name="Certification" #Certification="ngModel" [(ngModel)]="employeeObj.Certification" class="form-control"/>
+                    
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Company</label>
+                </div>
+                <div class="col-md-7">
+                    <input type="text" name="Company" placeholder="Company Name"  #Company="ngModel" required [(ngModel)]="employeeObj.Company" class="form-control"/>
+                    <div *ngIf="Company.touched">
+                        <span class="text-danger" *ngIf="Company.errors?.['required']"> Required</span>
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Few Lines About Yourslef</label>
+                    <textarea rows="3"placeholder="Few Lines"  name="FewDetails" [(ngModel)]="employeeObj.FewDetails" class="form-control"></textarea>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-6"> 
+                </div> 
+                <div class="col-md-6 text-end">
+                   <button class="btn btn-secondary btn-sm " style="padding-left: 20px;padding-right: 20px;"> Cancel</button>
+                   <button class="btn btn-secondary btn-sm mx-2" style="padding-left: 25px;padding-right: 25px;" [disabled]="form.invalid" (click)="onSave()"> Save</button>
+                </div> 
+            </div>
+        </form>
+        </div> 
+    </div>
+    <div class="col-md-8">
+        <h3>Employee List</h3>
+        <div class="outerDiv">
+            <div class="row">
+                <div class="col-md-6"> 
+    
+                </div>
+                <div class="col-md-3">
+                    <select [(ngModel)]="sortBy" class="form-control">
+                        <option selected value="" >Select Sort By</option>
+                        <option>Name</option>
+                        <option>Technology</option>
+                        <option>Designation</option>
+                        <option>Skill</option>
+                        <option>Core</option>
+                        <option>Company</option> 
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" placeholder="Search Text"  [(ngModel)]="searchText" (ngModelChange)="onSearch()" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr</th>
+                                <th>Name</th>
+                                <th>Technology</th>
+                                <th>Designation</th>
+                                <th>Skill</th>
+                                <th>Core Expertise</th>
+                                <th>Company</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="employeeArr.length != 0">
+                                <tr *ngFor="let item of employeeArr;let sr = index">
+                                    <td>{{sr+1}}</td>
+                                    <td>{{item.FirstName}} {{item.LastName}}</td>
+                                    <td>{{item.Technology}}</td>
+                                    <td>{{item.Designation}}</td>
+                                    <td>{{item.Skill}}</td>
+                                    <td>{{item.Core}}</td>
+                                    <td>{{item.Company}}</td>
+                                    <td class="text-center">
+                                        <i class="fa fa-pencil-square" style="color: blueviolet;font-size: 19px;" (click)="onEdit(item)" aria-hidden="true"></i>
+                                        <i class="fa fa-trash mx-2" style="color:red;font-size: 19px;" (click)="onDelete(item)" aria-hidden="true"></i>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngIf="employeeArr.length == 0">
+                                <tr>
+                                    <td colspan="8" class="text-center"> No Record Present</td>
+                                </tr>
+                            </ng-container> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
