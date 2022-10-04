@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { NgForComponent } from './components/topics/ng-for/ng-for.component';
 import { NgifComponent } from './components/topics/ngif/ngif.component';
 import { UsersComponent } from './components/users/users.component';
 
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path:'ngif',
         component: NgifComponent
+      },
+      {
+        path:'ng-for',
+        component: NgForComponent
       }
     ]
   }

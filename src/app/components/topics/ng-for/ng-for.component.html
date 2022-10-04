@@ -1,0 +1,60 @@
+<div class="row">
+<div class="col-md-3">
+  <select class="form-control">
+  <option *ngFor="let city of cityArray" [value]="city">{{city}}</option>
+  </select>
+</div>
+<div class="col-md-3">
+  <select class="form-control">
+  <option *ngFor="let student of studentList" [value]="student.id">
+    {{student.firstName}} {{student.LastName}}</option>
+  </select>
+</div>
+<div class="col-md-3">
+  <select class="form-control">
+  <option *ngFor="let name of getStudentList()">
+    {{name}}</option>
+  </select>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Mobile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentList;let srNo = index;let isFirst = first;let isLast= last;">
+          <td>{{srNo + 1}}</td>
+          <td>{{getFullName(student.firstName, student.LastName)}}</td>
+          <td>{{student.city}}</td>
+          <td>{{student.mobile}}</td>
+           <td>
+            <i *ngIf="student.grade =='A'" class="fa fa-amazon"></i>
+            <i *ngIf="student.grade =='B'" class="fa fa-android"></i>
+            <i *ngIf="student.grade =='C'" class="fa fa-angellist"></i>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let contact of student.contactDetails">{{contact}}</li>
+            </ul>
+          </td>
+          <td>{{student.addressObj.address1}},{{student.addressObj.address2}}, {{student.addressObj.city}}</td>
+          <td>
+            isFirst=>  {{isFirst}} isLast=> {{isLast}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{{name}}
+<ul>
+  <li *ngFor="let data of list | async">{{data.username}}</li>
+</ul>

@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AucompleteTextComponent } from './widgets/aucomplete-text/aucomplete-text.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { NgifComponent } from './components/topics/ngif/ngif.component';
+import { NgForComponent } from './components/topics/ng-for/ng-for.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgifComponent } from './components/topics/ngif/ngif.component';
     LoginComponent,
     AucompleteTextComponent,
     AddUserComponent,
-    NgifComponent
+    NgifComponent,
+    NgForComponent
   ],
   imports: [
     BrowserModule,
