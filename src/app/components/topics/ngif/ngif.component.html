@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="bg-success p-3" *ngIf="divOneVisible">div 1</div>
+  </div>
+  <div class="col-md-3">
+    <div class="bg-danger p-3" *ngIf="fName == lName">div 2</div>
+  </div>
+  <div class="col-md-3">
+    <div class="bg-primary p-3" *ngIf="isDiv3Visible()">div 3</div>
+  </div>
+  <div class="col-md-3">
+    <div class="bg-info p-3" *ngIf="div4Visible">div 4</div>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col-md-3">
+    <button class="btn btn-primary" (click)="onDiv1Hide()">Hide</button> &nbsp;
+    <button class="btn btn-danger" (click)="onDiv1Show()">Show</button>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary">Hide</button>&nbsp;
+    <button class="btn btn-danger">Show</button>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary" (click)="onDiv3Hide()">Hide</button>&nbsp;
+    <button class="btn btn-danger" (click)="onDiv3Show()">Show</button>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary" (click)="div4Visible=false">Hide</button>&nbsp;
+    <button class="btn btn-danger" (click)="div4Visible=true">Show</button>
+  </div>
+</div>
+<table class="table table-bordered">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      City
+    </th>
+    <th>
+      Marks
+    </th>
+    <th>Gender</th>
+  </tr>
+  <tr *ngFor="let data of StudentArry">
+    <td>{{data.name}}</td>
+    <td>{{data.city}}</td>
+    <td>{{data.totalMarks}}</td>
+    <td>
+      <span *ngIf="calculateResult(data.totalMarks)">Pass</span>
+      <span *ngIf="!calculateResult(data.totalMarks)">Fail</span>
+    </td>
+    <td>
+     <span *ngIf="data.gender == 'M'"><i class="fa fa-male" aria-hidden="true" style="color:red"></i></span>
+     <span  *ngIf="data.gender == 'F'"><i class="fa fa-female" aria-hidden="true"  style="color:green"></i></span>
+    </td>
+  </tr>
+</table>

@@ -7,12 +7,12 @@ import { EmpService } from 'src/app/services/emp.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
- 
+
   employeeObj: EmployeeObj;
   sortBy: string;
   searchText: string;
   employeeArr : EmployeeObj[] = [];
- 
+
 
   constructor() {
      this.employeeObj = new EmployeeObj();
@@ -20,31 +20,31 @@ export class EmployeeComponent implements OnInit {
      this.sortBy = '';
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.getAllEmpoyee();
   }
-  onSave() { 
+  onSave() {
      const isData = localStorage.getItem("EmpData");
      if(isData == null) {
       const newArr = [];
       this.employeeObj.EmployeeId = 0;
       newArr.push(this.employeeObj);
-      localStorage.setItem("EmpData", JSON.stringify(newArr)); 
+      localStorage.setItem("EmpData", JSON.stringify(newArr));
      } else {
       const oldData = JSON.parse(isData);
       const newId =oldData.length + 1;
       this.employeeObj.EmployeeId = newId;
       oldData.push(this.employeeObj);
-      localStorage.setItem("EmpData", JSON.stringify(oldData)); 
+      localStorage.setItem("EmpData", JSON.stringify(oldData));
      }
      this.employeeObj = new EmployeeObj();
      this.getAllEmpoyee();
   }
-  getAllEmpoyee() { 
+  getAllEmpoyee() {
     const isData = localStorage.getItem("EmpData");
     if(isData != null) {
       const localData = JSON.parse(isData);
-      this.employeeArr = localData; 
+      this.employeeArr = localData;
      }
   }
 
@@ -58,30 +58,54 @@ export class EmployeeComponent implements OnInit {
       for (let index = 0; index < localData.length; index++) {
          if (localData[index].EmployeeId == item.EmployeeId) {
           localData.splice(0,1);
-         } 
+         }
       }
-      localStorage.setItem("EmpData", JSON.stringify(localData)); 
+      localStorage.setItem("EmpData", JSON.stringify(localData));
       this.getAllEmpoyee();
      }
-    
+
   }
   onSearch() {
+    // const isData = localStorage.getItem("EmpData");
+    // if(isData != null) {
+    //   const localData = JSON.parse(isData);
+    //   if (this.sortBy == "Name") {
+    //     const filteredData = localData.filter((m:EmployeeObj) => m.FirstName.toLocaleLowerCase().startsWith(this.searchText.toLocaleLowerCase()) )
+    //     this.employeeArr = filteredData;
+    //   }
+    //   if (this.sortBy == "Technology") {
+    //     const filteredData = localData.filter((m:EmployeeObj) => m.Technology.toLocaleLowerCase().startsWith(this.searchText.toLocaleLowerCase()) )
+    //     this.employeeArr = filteredData;
+    //   }
+
+    // }
+    debugger;
     const isData = localStorage.getItem("EmpData");
-    if(isData != null) { 
+    if(isData != null) {
       const localData = JSON.parse(isData);
-      if (this.sortBy == "Name") {
-        const filteredData = localData.filter((m:EmployeeObj) => m.FirstName.toLocaleLowerCase().startsWith(this.searchText.toLocaleLowerCase()) )
-        this.employeeArr = filteredData;
-      } 
-      if (this.sortBy == "Technology") {
-        const filteredData = localData.filter((m:EmployeeObj) => m.Technology.toLocaleLowerCase().startsWith(this.searchText.toLocaleLowerCase()) )
-        this.employeeArr = filteredData;
-      } 
-       
+      debugger;
+      //const filteredData = localData.filter((m:any) => m.FirstName == this.searchText);
+     // const filteredData = localData.filter((m:any) => m.FirstName.toLowerCase() == this.searchText.toLowerCase());
+      const filteredData = localData.filter((m:EmployeeObj) => m.FirstName.toLocaleLowerCase().startsWith(this.searchText.toLocaleLowerCase()) )
+      this.employeeArr = filteredData;
     }
   }
-  
-  
+  onSort() {
+    const isData = localStorage.getItem("EmpData");
+    if(isData != null) {
+      const localData = JSON.parse(isData);
+      if (this.sortBy == "Name") {
+        const filteredData = localData.sort((a:any, b: any) => a.FirstName.localeCompare(b.FirstName))
+        this.employeeArr = filteredData;
+      }
+      if (this.sortBy == "Technology") {
+        const filteredData = localData.sort((a:any, b: any) => a.Technology.localeCompare(b.Technology))
+        this.employeeArr = filteredData;
+      }
+    }
+  }
+
+
 
 }
 
@@ -112,5 +136,5 @@ export class EmployeeObj {
   }
 }
 
- 
+
 

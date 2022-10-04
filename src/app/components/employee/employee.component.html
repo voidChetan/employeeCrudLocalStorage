@@ -2,7 +2,7 @@
     <div class="col-md-4">
         <h3>Employee Details Entry Form</h3>
         <div class="outerDiv">
-            <form #form="ngForm"> 
+            <form #form="ngForm">
             <div class="row">
                 <div class="col-md-5">
                     <label>Name</label>
@@ -29,7 +29,7 @@
                     <div *ngIf="Technology.touched">
                         <span class="text-danger" *ngIf="Technology.errors?.['required']"> Required</span>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -40,7 +40,7 @@
                     <div *ngIf="Designation.touched">
                         <span class="text-danger" *ngIf="Designation.errors?.['required']"> Required</span>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -56,7 +56,7 @@
                     <div *ngIf="Skill.touched">
                         <span class="text-danger" *ngIf="Skill.errors?.['required']"> Required</span>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -67,7 +67,7 @@
                     <div *ngIf="Core.touched">
                         <span class="text-danger" *ngIf="Core.errors?.['required']"> Required</span>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -76,16 +76,16 @@
                 <div class="col-md-7">
                     <input type="radio" value="Yes"  name="IsCertification" [(ngModel)]="employeeObj.IsCertification"/> Yes
                     <input type="radio"  value="No" name="IsCertification" [(ngModel)]="employeeObj.IsCertification"/> No
-                </div> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    
+
                 </div>
                 <div class="col-md-7">
                     <input type="text" placeholder="Certification" [disabled]="employeeObj.IsCertification == 'No' || employeeObj.IsCertification == ''"    name="Certification" #Certification="ngModel" [(ngModel)]="employeeObj.Certification" class="form-control"/>
-                    
-                </div> 
+
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -96,41 +96,41 @@
                     <div *ngIf="Company.touched">
                         <span class="text-danger" *ngIf="Company.errors?.['required']"> Required</span>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <label>Few Lines About Yourslef</label>
                     <textarea rows="3"placeholder="Few Lines"  name="FewDetails" [(ngModel)]="employeeObj.FewDetails" class="form-control"></textarea>
-                </div> 
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-6"> 
-                </div> 
+                <div class="col-md-6">
+                </div>
                 <div class="col-md-6 text-end">
                    <button class="btn btn-secondary btn-sm " style="padding-left: 20px;padding-right: 20px;"> Cancel</button>
                    <button class="btn btn-secondary btn-sm mx-2" style="padding-left: 25px;padding-right: 25px;" [disabled]="form.invalid" (click)="onSave()"> Save</button>
-                </div> 
+                </div>
             </div>
         </form>
-        </div> 
+        </div>
     </div>
     <div class="col-md-8">
         <h3>Employee List</h3>
         <div class="outerDiv">
             <div class="row">
-                <div class="col-md-6"> 
-    
+                <div class="col-md-6">
+
                 </div>
                 <div class="col-md-3">
-                    <select [(ngModel)]="sortBy" class="form-control">
+                    <select [(ngModel)]="sortBy" (change)="onSort()" class="form-control">
                         <option selected value="" >Select Sort By</option>
                         <option>Name</option>
                         <option>Technology</option>
                         <option>Designation</option>
                         <option>Skill</option>
                         <option>Core</option>
-                        <option>Company</option> 
+                        <option>Company</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -172,12 +172,12 @@
                                 <tr>
                                     <td colspan="8" class="text-center"> No Record Present</td>
                                 </tr>
-                            </ng-container> 
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>

@@ -1,0 +1,14 @@
+<table class="table table-bordered table-hover table-sm table-secondary">
+    <thead>
+        <tr>
+            <th *ngFor="let item of colArr">{{item}}</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of gridData;let i= index">
+            <td *ngFor="let item of colArr">
+             {{user[item]}}
+            </td> 
+        </tr> 
+    </tbody>
+</table>

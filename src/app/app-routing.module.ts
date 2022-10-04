@@ -1,12 +1,45 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmployeeComponent } from './components/employee/employee.component'; 
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { NgifComponent } from './components/topics/ngif/ngif.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   {
-    path:'emp',
-    component: EmployeeComponent
-  } 
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path:'',
+    component: HomeComponent,
+    children:[
+      {
+        path:'emp',
+        component: EmployeeComponent
+      },
+      {
+        path:'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path:'users',
+        component: UsersComponent
+      },
+      {
+        path:'AddUser',
+        component: AddUserComponent
+      },
+      {
+        path:'ngif',
+        component: NgifComponent
+      }
+    ]
+  }
+
 ];
 
 @NgModule({

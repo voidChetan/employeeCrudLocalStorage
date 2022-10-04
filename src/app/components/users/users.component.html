@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-10">
+  </div>
+  <div class="col-md-2 text-right">
+    <input [formControl]="search" class="form-control" placeholder="Search here.." />
+  </div>
+</div>
+
+<div class="row" [class]="theme">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-secondary">
+        Recent Users
+      </div>
+      <div class="card-body bg-white">
+        <table class="table table-bordered table-hover mt-1">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>Name</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>website</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of result | async;let i= index">
+              <td>{{i+1}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
+              <td>{{user.website}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
