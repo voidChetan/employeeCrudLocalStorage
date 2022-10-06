@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <div class="btn-group">
+      <button type="button" class="btn btn-warning" (click)="onFunction('turnary')">Using Turnary</button>
+      <button type="button" class="btn btn-success" (click)="onFunction('multiple')">Multiple Condition</button>
+      <button type="button" class="btn btn-warning" (click)="onFunction('function')">Using Function</button>
+    </div>
+  </div>
+</div>
+<div class="row pt-3" *ngIf="classCondition == 'turnary'">
+  <h6>turnary condition</h6>
+  <div [ngClass]="isSidePanel()? 'col-md-12' :  'col-md-8' ">
+    <div class="card">
+      <div class="card-header bg-info">
+        Example of ng class
+        <button (click)="onAdd()" class="btn btn-secondary btn-sm" style="float: right;">Add</button>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>By using turnary condition</li>
+          <li>By using multiple condition</li>
+          <li>By using function</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4" *ngIf="!isSidePanelOpen">
+    <div class="card">
+      <div class="card-header bg-info">
+        Example of ng class
+        <button (click)="onClose()" class="btn btn-secondary btn-sm" style="float: right;">Close</button>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <th>Name</th>
+            <th>Surname</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ram</td>
+              <td>Warma</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="classCondition == 'multiple'">
+  <div class="col-md-12">
+    <h6>Multiple class with multiple condition</h6>
+    <div style="float:right">
+      <button (click)="role = 'admin'" class="btn btn-info btn-sm" >Admin</button>&nbsp;&nbsp;
+      <button (click)="role = 'user'" class="btn btn-secondary btn-sm" >User</button>
+    </div>
+  </div>
+    <div class="row">
+      <div [ngClass]="{'col-md-12': isSidePanelOpen, 'col-md-8': !isSidePanelOpen,'bg-secondary': (role == 'admin'),
+      'bg-success': (role == 'user')}">
+        <div class="card">
+          <div class="card-header bg-info">
+            Example of ng class
+            <button  class="btn btn-secondary btn-sm" style="float: right;">Add</button>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>By using turnary condition</li>
+              <li>By using multiple condition</li>
+              <li>By using function</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" *ngIf="!isSidePanelOpen">
+        <div class="card">
+          <div class="card-header bg-info">
+            Example of ng class
+            <button (click)="onClose()" class="btn btn-secondary btn-sm" style="float: right;">Close</button>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <th>Name</th>
+                <th>Surname</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ram</td>
+                  <td>Warma</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row" *ngIf="classCondition == 'function'">
+  <div class="col-md-12">
+    <h6>Add daynamic class using function or variable</h6>
+    <div style="height: 100px;width: 100px;" [ngClass]="theme">
+      div 1
+    </div>
+    <div style="height: 100px;width: 100px;" [ngClass]="getClass()">
+      div 2
+    </div>
+  </div>
+</div>

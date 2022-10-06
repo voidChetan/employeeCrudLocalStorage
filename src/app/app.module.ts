@@ -17,6 +17,8 @@ import { AucompleteTextComponent } from './widgets/aucomplete-text/aucomplete-te
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { NgifComponent } from './components/topics/ngif/ngif.component';
 import { NgForComponent } from './components/topics/ng-for/ng-for.component';
+import { NgStyleComponent } from './components/topics/ng-style/ng-style.component';
+import { NgClassComponent } from './components/topics/ng-class/ng-class.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NgForComponent } from './components/topics/ng-for/ng-for.component';
     AucompleteTextComponent,
     AddUserComponent,
     NgifComponent,
-    NgForComponent
+    NgForComponent,
+    NgStyleComponent,
+    NgClassComponent
   ],
   imports: [
     BrowserModule,
