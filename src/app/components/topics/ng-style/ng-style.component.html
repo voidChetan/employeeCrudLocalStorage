@@ -1,1 +1,49 @@
-<p>ng-style works!</p>
+<div class="row">
+  <div class="col-md-12">
+      <div class="row">
+          <div class="col-md-12 ">
+              <table class="table table-bordered table-hover">
+                  <thead>
+                      <tr>
+                          <th>Code</th>
+                          <th>Name</th>
+                          <th>City</th>
+                          <th >
+                            <select>
+                              <option *ngFor="let item of studentList" [value]="item.id">{{item.name}}</option>
+                            </select>
+                          </th>
+                          <th class="text-center">Status</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let student of studentList">
+                          <td [style.background-color]="student.colorCode">
+                              {{student.colorCode}}
+                          </td>
+                          <td [ngStyle]="{'background-color':student.colorCode,'font-size':'22px'}" >
+                            {{student.colorCode}}
+                        </td>
+                          <td [ngStyle]="myCss" style="font-size: 30px;">
+                            <input type="text" name="" value="{{student.name}}" id="">
+                            {{student.name}}</td>
+                          <td>
+                            <input type="text" name="" [value]="student.city" id="">
+                            {{student.city}}</td>
+                          <td class="text-center">
+                            <div class="progress">
+                              <div class="progress-bar"  [style.width.%]="student.attendance">{{student.attendance}}</div>
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <div class="progress">
+                              <div class="progress-bar" [ngStyle]="{'width':student.attendance+'%'}">{{student.attendance}}</div>
+                            </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
