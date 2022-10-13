@@ -19,6 +19,8 @@ import { NgifComponent } from './components/topics/ngif/ngif.component';
 import { NgForComponent } from './components/topics/ng-for/ng-for.component';
 import { NgStyleComponent } from './components/topics/ng-style/ng-style.component';
 import { NgClassComponent } from './components/topics/ng-class/ng-class.component';
+import { TemFormComponent } from './components/topics/tem-form/tem-form.component';
+import { NaPipe } from './pipes/na.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { NgClassComponent } from './components/topics/ng-class/ng-class.componen
     NgifComponent,
     NgForComponent,
     NgStyleComponent,
-    NgClassComponent
+    NgClassComponent,
+    TemFormComponent,
+    NaPipe
   ],
   imports: [
     BrowserModule,

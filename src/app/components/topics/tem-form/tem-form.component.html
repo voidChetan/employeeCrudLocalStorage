@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-md-5">
+    <div class="outerDiv">
+      <form #form="ngForm">
+        <div class="row">
+          <div class="col-md-5">
+            <label>Name</label>
+          </div>
+          <div class="col-md-3">
+            <input type="text" placeholder="First Name" required #fname="ngModel" [(ngModel)]="empObj.FirstName" name="FirstName" class="form-control" />
+            <div *ngIf="fname.touched || fname.dirty">
+              <span class="text-danger" *ngIf="fname.errors?.['required']"> this is required</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <input type="text" placeholder="Last Name" required minlength="3" maxlength="5" #lname="ngModel" [(ngModel)]="empObj.LastName" required name="LastName" class="form-control" />
+            <div *ngIf="lname.touched || lname.dirty">
+              <span class="text-danger" *ngIf="lname.errors?.['required']"> this is required</span>
+              <span class="text-danger" *ngIf="lname.errors?.['minlength']"> min char is 3</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <label>Technology</label>
+          </div>
+          <div class="col-md-7">
+            <input type="text" placeholder="Technology" #pan="ngModel" required pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" [(ngModel)]="empObj.Technology" name="Technology" class="form-control" />
+            <div *ngIf="pan.touched || pan.dirty">
+              <span class="text-danger" *ngIf="pan.errors?.['required']"> this is required</span>
+              <span class="text-danger" *ngIf="pan.errors?.['pattern']"> pan no is not valid</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <label>Designation</label>
+          </div>
+          <div class="col-md-7">
+            <input type="text" placeholder="Designation" [(ngModel)]="empObj.Designation" name="Designation" class="form-control" />
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <label>Skills</label>
+          </div>
+          <div class="col-md-7">
+            <select name="Skill" [(ngModel)]="empObj.Skill" class="form-control">
+              <option selected value="">Select Skill</option>
+              <option>Dot Net</option>
+              <option>Angular</option>
+              <option>Java</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <label>Core Expertise In</label>
+          </div>
+          <div class="col-md-7">
+            <input type="text" placeholder="Core Expertise" [(ngModel)]="empObj.Core" name="Core" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <label>Certifications If Any</label>
+          </div>
+          <div class="col-md-7">
+            <input type="radio" value="Yes" [(ngModel)]="empObj.IsCertification" name="IsCertification" /> Yes
+            <input type="radio" value="No" [(ngModel)]="empObj.IsCertification" name="IsCertification" /> No
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+          </div>
+          <div class="col-md-7">
+            <input type="text" placeholder="Certification" [(ngModel)]="empObj.Certification"  name="Certification" class="form-control" />
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <label>Company</label>
+          </div>
+          <div class="col-md-7">
+            <input type="text" name="Company" placeholder="Company Name" [(ngModel)]="empObj.Company"  class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Few Lines About Yourslef</label>
+            <textarea rows="3" placeholder="Few Lines" name="FewDetails" [(ngModel)]="empObj.FewDetails"  class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6 text-end">
+            <button class="btn btn-secondary btn-sm " style="padding-left: 20px;padding-right: 20px;"> Cancel</button>
+            <button class="btn btn-secondary btn-sm mx-2" (click)="onSave(form)" [disabled]="form.invalid" style="padding-left: 25px;padding-right: 25px;"> Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-7 ">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th class="text-center">Status</th>
+          <th>Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentList">
+          <td>
+            {{student.colorCode |na:'--'}}
+          </td>
+          <td>
+            {{student.name  |na:'NA'}}
+          </td>
+          <td>
+            {{student.city  |na:"__"}}
+          </td>
+          <td class="text-center">
+            {{student.attendance  |na:'--'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

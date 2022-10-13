@@ -10,6 +10,7 @@ import { NgStyleComponent } from './components/topics/ng-style/ng-style.componen
 import { NgForComponent } from './components/topics/ng-for/ng-for.component';
 import { NgifComponent } from './components/topics/ngif/ngif.component';
 import { UsersComponent } from './components/users/users.component';
+import { TemFormComponent } from './components/topics/tem-form/tem-form.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
       {
         path:'ng-style',
         component: NgStyleComponent
+      },
+      {
+        path:'template',
+        component: TemFormComponent
       }
     ]
   }
