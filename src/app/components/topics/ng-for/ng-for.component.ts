@@ -14,6 +14,33 @@ export class NgForComponent implements OnInit {
   userList: any[] = [];
   result: number = 0;
   public name: string = 'demo';
+  familyObj: any = {
+    name: '',
+    age: '',
+    relation: ''
+  };
+  empObj: any = {
+    name: 'shankr',
+    city: 'nagpur',
+    address: 'address',
+    familyMembers: [] = [
+      {
+        name: 'qq',
+        age: '23',
+        relation: 'ff'
+      },
+      {
+        name: 'ww',
+        age: '22',
+        relation: 'ff'
+      },
+      {
+        name: 'tt',
+        age: '13',
+        relation: 'se'
+      }
+    ]
+  }
   constructor(private serv: EmpService) {
     this.cityArray = ['Nagpur', 'pune', 'solapur', 'mumbai', 'jalgaon', 'panji', 'delhi'];
     this.list = this.serv.getUsers();
@@ -82,6 +109,16 @@ export class NgForComponent implements OnInit {
 
   ngOnInit(): void {
     const result = this.add(53, 5);
+  }
+
+  addFamily() {
+    const obj = JSON.stringify(this.familyObj);
+
+    this.empObj.familyMembers.push(JSON.parse(obj));
+  }
+  ONsAVE() {
+    debugger;
+    const obj = this.empObj;
   }
   loadUsers() {
     this.serv.getUsers().subscribe((res: any) => {
