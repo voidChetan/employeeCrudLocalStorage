@@ -1,67 +1,53 @@
-<div class="row">
-<div class="col-md-3">
-  <select class="form-control">
-  <option *ngFor="let city of cityArray" [value]="city">{{city}}</option>
-  </select>
-</div>
-<div class="col-md-3">
-  <select class="form-control">
-  <option *ngFor="let student of studentList" [value]="student.id">
-    {{student.firstName}} {{student.LastName}}</option>
-  </select>
-</div>
-<div class="col-md-3">
-  <select class="form-control">
-  <option *ngFor="let name of getStudentList()">
-    {{name}}</option>
-  </select>
-</div>
-</div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Name</label>
+        <input type="text" class="form-control" [(ngModel)]="empObj.name" >
+      </div>
+      <div class="col-md-4">
+        <label>City</label>
+        <input type="text" class="form-control" [(ngModel)]="empObj.city" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <label>Address</label>
+        <input type="text" class="form-control" [(ngModel)]="empObj.address" >
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
     <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Sr No</th>
-          <th>Name</th>
-          <th>City</th>
-          <th>Mobile</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of studentList;let srNo = index;let isFirst = first;let isLast= last;">
-          <td>{{srNo + 1}}</td>
-          <td>{{getFullName(student.firstName, student.LastName)}}</td>
-          <td>{{student.city}}</td>
-          <td>{{student.mobile}}</td>
-           <td>
-            <i *ngIf="student.grade =='A'" class="fa fa-amazon"></i>
-            <i *ngIf="student.grade =='B'" class="fa fa-android"></i>
-            <i *ngIf="student.grade =='C'" class="fa fa-angellist"></i>
-          </td>
-          <td>
-            <ul>
-              <li *ngFor="let contact of student.contactDetails">{{contact}}</li>
-            </ul>
-          </td>
-          <td>{{student.addressObj.address1}},{{student.addressObj.address2}}, {{student.addressObj.city}}</td>
-          <td>
-            isFirst=>  {{isFirst}} isLast=> {{isLast}}
-          </td>
-        </tr>
-      </tbody>
+      <tr>
+        <td>
+          Name
+          <input type="text" name="nam" class="form-control" [(ngModel)]="familyObj.name"/>
+        </td>
+        <td>
+          Age
+          <input type="text"  name="dsds" class="form-control" [(ngModel)]="familyObj.age"/>
+        </td>
+
+        <td>
+          Relation
+          <input type="text"  name="namfgf" class="form-control" [(ngModel)]="familyObj.relation"/>
+        </td>
+        <td>
+         <button class="btn btn-sm btn-primary" (click)="addFamily()">add</button>
+        </td>
+      </tr>
+      <tr *ngFor="let item of empObj.familyMembers">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.relation}}</td>
+      </tr>
     </table>
   </div>
 </div>
-{{name}}
-<ul>
-  <li *ngFor="let data of list | async">{{data.username}}</li>
-</ul>
-<!-- <tr>
-  <td>room</td>
-  <td *ngFor="dates"></td>
-</tr>
-<tr *ngFor="rooms">
-  <td *ngFor="dates"></td>
-</tr> -->
+<div class="row">
+  <div class="col-md-12 text-center">
+    <button class="btn btn-primary" (click)="ONsAVE()">Save </button>
+  </div>
+</div>
