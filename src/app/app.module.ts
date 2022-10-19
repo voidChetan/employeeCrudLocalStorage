@@ -21,6 +21,7 @@ import { NgStyleComponent } from './components/topics/ng-style/ng-style.componen
 import { NgClassComponent } from './components/topics/ng-class/ng-class.component';
 import { TemFormComponent } from './components/topics/tem-form/tem-form.component';
 import { NaPipe } from './pipes/na.pipe';
+import { ReactiveComponent } from './components/topics/reactive/reactive.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NaPipe } from './pipes/na.pipe';
     NgStyleComponent,
     NgClassComponent,
     TemFormComponent,
-    NaPipe
+    NaPipe,
+    ReactiveComponent
   ],
   imports: [
     BrowserModule,

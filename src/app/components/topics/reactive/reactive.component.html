@@ -1,0 +1,34 @@
+<form [formGroup]="userForm"  (ngSubmit)="save()">
+  <div class="row">
+    <div class="col-md-4">
+      <label>Name</label>
+      <input type="text" formControlName="name" class="form-control"  >
+      <div *ngIf="userForm.controls['name'].touched || userForm.controls['name'].dirty  || submitted">
+        <span class="text-danger" *ngIf="userForm.controls['name'].errors?.['required']"> this is required</span>
+        <span class="text-danger" *ngIf="userForm.controls['name'].errors?.['minlength']">min lengthnot valid</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label>City</label>
+      <input type="text" formControlName="contact" class="form-control"   >
+      <div *ngIf="userForm.controls['contact'].touched || userForm.controls['contact'].dirty || submitted">
+        <span class="text-danger" *ngIf="userForm.controls['contact'].errors?.['required']"> this is required</span>
+        <span class="text-danger" *ngIf="userForm.controls['contact'].errors?.['pattern']"> pan no is not valid</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label>City</label>
+      <input type="radio" value="male" formControlName="gender"   > male
+      <input type="radio" value="female" formControlName="gender"    > femalemale
+      <div *ngIf="userForm.controls['gender'].touched || userForm.controls['gender'].dirty  || submitted">
+        <span class="text-danger" *ngIf="userForm.controls['gender'].errors?.['required']"> this is required</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button>Save</button>
+      <button (click)="userForm.reset()">Reset</button>
+    </div>
+  </div>
+</form>

@@ -11,6 +11,7 @@ import { NgForComponent } from './components/topics/ng-for/ng-for.component';
 import { NgifComponent } from './components/topics/ngif/ngif.component';
 import { UsersComponent } from './components/users/users.component';
 import { TemFormComponent } from './components/topics/tem-form/tem-form.component';
+import { ReactiveComponent } from './components/topics/reactive/reactive.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
       {
         path:'template',
         component: TemFormComponent
+      },
+      {
+        path:'reactive',
+        component: ReactiveComponent
       }
     ]
   }
