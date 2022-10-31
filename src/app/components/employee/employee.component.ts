@@ -79,11 +79,11 @@ export class EmployeeComponent implements OnInit {
     //   }
 
     // }
-    debugger;
+
     const isData = localStorage.getItem("EmpData");
     if(isData != null) {
       const localData = JSON.parse(isData);
-      debugger;
+
       //const filteredData = localData.filter((m:any) => m.FirstName == this.searchText);
      // const filteredData = localData.filter((m:any) => m.FirstName.toLowerCase() == this.searchText.toLowerCase());
       const filteredData = localData.filter((m:EmployeeObj) => m.FirstName.toLocaleLowerCase().startsWith(this.searchText.toLocaleLowerCase()) )

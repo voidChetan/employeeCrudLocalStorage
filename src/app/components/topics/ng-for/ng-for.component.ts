@@ -117,7 +117,7 @@ export class NgForComponent implements OnInit {
     this.empObj.familyMembers.push(JSON.parse(obj));
   }
   ONsAVE() {
-    debugger;
+
     const obj = this.empObj;
   }
   loadUsers() {

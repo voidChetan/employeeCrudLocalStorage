@@ -25,7 +25,7 @@ export class TemFormComponent implements OnInit {
   ngOnInit(): void {
   }
   onSave(form: NgForm){
-    debugger
+
     if(form.invalid){
       alert('form invalid')
     } else{

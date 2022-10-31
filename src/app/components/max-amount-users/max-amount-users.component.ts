@@ -15,8 +15,8 @@ export class MaxAmountUsersComponent implements OnInit {
       this.isLoader = false;
     }, 1000);
     this.empSrv.onThemeChange.subscribe(item => {
-      debugger;
-      
+
+
     })
    }
 

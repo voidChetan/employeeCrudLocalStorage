@@ -16,8 +16,8 @@ export class RecentUsersComponent implements OnInit {
       this.isLoader = false;
     }, 2000);
     this.empSrv.onThemeChange.subscribe(item => {
-      debugger;
-      
+
+
     })
    }
 

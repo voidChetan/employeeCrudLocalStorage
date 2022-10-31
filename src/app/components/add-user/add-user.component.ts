@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmpService } from 'src/app/services/emp.service';
@@ -8,33 +9,25 @@ import { EmpService } from 'src/app/services/emp.service';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  user: any;
-  isApi: boolean = false;
-  constructor(private empService: EmpService) {
-    this.user = {
-      name: '',
-      username: '',
-      email: '',
-      phone: '',
-      website: '',
-      id: 0
-    };
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
   }
-  saveUser(form: NgForm) {
-    if (!form.invalid)  {
-      if (!this.isApi) {
-        this.isApi =  true;
-        this.empService.addUser( this.user).subscribe((result) => {
-          alert("User Saved Successfully");
-          this.isApi =  false;
+  onChangeFile(event: any) {
+    debugger;
+    if(event.target.files.length > 0) {
+      const file = event.target.files[0];
+      if(file.type == 'image/png' || file.type == 'image/jpeg') {
+        const formData = new FormData();
+        formData.append('file',file);
+        this.http.post('http://onlinetestapi.gerasim.in/api/GetValet/uploadFile',formData).subscribe((res: any)=> {
+        debugger
         });
-      } 
-    } else {
-      alert("Check Validations");
-    } 
+      } else {
+        alert('Pease select only jpeg and png');
+      }
+    }
   }
 
 }

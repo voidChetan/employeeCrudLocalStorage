@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './components/employee/employee.component';
@@ -22,6 +22,9 @@ import { NgClassComponent } from './components/topics/ng-class/ng-class.componen
 import { TemFormComponent } from './components/topics/tem-form/tem-form.component';
 import { NaPipe } from './pipes/na.pipe';
 import { ReactiveComponent } from './components/topics/reactive/reactive.component';
+import { StudentComponent } from './components/student/student.component';
+import { UserLoginComponent } from './components/user/user-login/user-login.component';
+import { CustomInterceptor } from './services/custom.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { ReactiveComponent } from './components/topics/reactive/reactive.compone
     NgClassComponent,
     TemFormComponent,
     NaPipe,
-    ReactiveComponent
+    ReactiveComponent,
+    StudentComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,10 @@ import { ReactiveComponent } from './components/topics/reactive/reactive.compone
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

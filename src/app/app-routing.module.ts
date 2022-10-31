@@ -12,11 +12,13 @@ import { NgifComponent } from './components/topics/ngif/ngif.component';
 import { UsersComponent } from './components/users/users.component';
 import { TemFormComponent } from './components/topics/tem-form/tem-form.component';
 import { ReactiveComponent } from './components/topics/reactive/reactive.component';
+import { StudentComponent } from './components/student/student.component';
+import { UserLoginComponent } from './components/user/user-login/user-login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: UserLoginComponent
   },
   {
     path:'',
@@ -61,6 +63,10 @@ const routes: Routes = [
       {
         path:'reactive',
         component: ReactiveComponent
+      },
+      {
+        path:'student',
+        component: StudentComponent
       }
     ]
   }

@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
   search: FormControl = new FormControl("");
   theme: string = '';
 
-  constructor(private userSrv: EmpService) { 
+  constructor(private userSrv: EmpService) {
     this.result = this.search.valueChanges.pipe(map((search) =>
       search.trim()),
       debounceTime(200),
@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
     //    })
     // );
     this.userSrv.onThemeChange.subscribe(item=>{
-      debugger;
+
       this.theme = item;
     })
   }

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { forkJoin, Subscription } from 'rxjs';
+import { AccountService } from 'src/app/services/account.service';
 import { EmpService } from 'src/app/services/emp.service';
 
 @Component({
@@ -10,28 +11,73 @@ import { EmpService } from 'src/app/services/emp.service';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
-  
+
   topUsers: any[] = [];
   theme: string = '';
   recentUsers: any[] = [];
-  constructor(private empSrv: EmpService) {
-    this.empSrv.onThemeChange.subscribe(item => {
-      debugger;
-      this.theme = item;
-    })
+  constructor(private empSrv: EmpService, private accoService: AccountService) {
   }
 
   ngOnInit(): void {
-    //this.fetchData();
-    this.loadTopUsers();
-    this.loadRecentUsers();
-    this.loadDashboardData();
+   this.loadCustomer();
   }
+
+ loadCustomer() {
+  debugger
+  this.accoService.getCustomers().subscribe((res: any) => {
+    debugger
+  })
+ }
+
+ upload(event:any) {
+  debugger
+  const form = new FormData();
+  if (event.target.files.length > 0) {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    this.accoService.uploadfile(formData).subscribe((res: any) => {
+      debugger
+    })
+  }
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   fetchData() {
     forkJoin([this.empSrv.getTopUsers(),  this.empSrv.getUsers()]).subscribe(res => {
         console.log(res);
-        debugger;
+
         this.topUsers = res[0];
         this.recentUsers = res[1];
       }, err => {
