@@ -21,7 +21,7 @@ export class AddUserComponent implements OnInit {
       if(file.type == 'image/png' || file.type == 'image/jpeg') {
         const formData = new FormData();
         formData.append('file',file);
-        this.http.post('http://onlinetestapi.gerasim.in/api/GetValet/uploadFile',formData).subscribe((res: any)=> {
+        this.http.post('http://storeapi.gerasim.in/api/Customer/Upload',formData).subscribe((res: any)=> {
         debugger
         });
       } else {

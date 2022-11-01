@@ -41,6 +41,7 @@ export class UserLoginComponent implements OnInit {
 
    this.accService.onLogin(this.loginObj).subscribe((res: any) => {
 
+      debugger;
      console.log('res',res)
      localStorage.setItem('token',res.token);
      this.route.navigateByUrl('/dashboard');

@@ -25,6 +25,7 @@ import { ReactiveComponent } from './components/topics/reactive/reactive.compone
 import { StudentComponent } from './components/student/student.component';
 import { UserLoginComponent } from './components/user/user-login/user-login.component';
 import { CustomInterceptor } from './services/custom.interceptor';
+import { MyInterceptor } from './services/my.interceptor';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,10 @@ import { CustomInterceptor } from './services/custom.interceptor';
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS, useClass: MyInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]
