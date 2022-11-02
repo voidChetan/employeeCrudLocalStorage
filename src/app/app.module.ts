@@ -26,6 +26,7 @@ import { StudentComponent } from './components/student/student.component';
 import { UserLoginComponent } from './components/user/user-login/user-login.component';
 import { CustomInterceptor } from './services/custom.interceptor';
 import { MyInterceptor } from './services/my.interceptor';
+import { AceessDirective } from './directives/aceess.directive';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MyInterceptor } from './services/my.interceptor';
     NaPipe,
     ReactiveComponent,
     StudentComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    AceessDirective
   ],
   imports: [
     BrowserModule,

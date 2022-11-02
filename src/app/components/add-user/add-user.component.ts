@@ -15,14 +15,14 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
   }
   onChangeFile(event: any) {
-    debugger;
+
     if(event.target.files.length > 0) {
       const file = event.target.files[0];
       if(file.type == 'image/png' || file.type == 'image/jpeg') {
         const formData = new FormData();
         formData.append('file',file);
         this.http.post('http://storeapi.gerasim.in/api/Customer/Upload',formData).subscribe((res: any)=> {
-        debugger
+
         });
       } else {
         alert('Pease select only jpeg and png');

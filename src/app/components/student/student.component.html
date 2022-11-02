@@ -24,13 +24,13 @@
               <td>
                 <input type="checkbox" [(ngModel)]="item.isChecked">
               </td>
-              <td>{{item.fullName}}</td>
+              <td appPhone>{{item.fullName}}</td>
               <td>{{item.mobile}}</td>
-              <td>{{item.email}}</td>
+              <td appPhone>{{item.email}}</td>
               <td>{{item.address}}</td>
               <td class="text-center">
-                <button type="button" class="btn btn-info btn-sm" (click)="onEdit(item)">Edit</button>&nbsp;
-                <button type="button" class="btn btn-secondary btn-sm"
+                <button type="button" appAceess class="btn btn-info btn-sm" (click)="onEdit(item)">Edit</button>&nbsp;
+                <button type="button" appAceess class="btn btn-secondary btn-sm"
                   (click)="onDelete(item.studentId)">Remove</button>
               </td>
             </tr>

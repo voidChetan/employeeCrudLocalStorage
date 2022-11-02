@@ -39,12 +39,12 @@ export class UserLoginComponent implements OnInit {
   onLogin() {
 
 
-   this.accService.onLogin(this.loginObj).subscribe((res: any) => {
+  // this.accService.onLogin(this.loginObj).subscribe((res: any) => {
 
-      debugger;
-     console.log('res',res)
-     localStorage.setItem('token',res.token);
+
+    // console.log('res',res)
+    // localStorage.setItem('token',res.token);
      this.route.navigateByUrl('/dashboard');
-   })
+  // })
   }
 }

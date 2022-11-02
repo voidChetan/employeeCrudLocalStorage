@@ -98,7 +98,7 @@ export class StudentComponent implements OnInit {
     localStorage.setItem('studentList',JSON.stringify(this.studentArr));
   }
   onEdit(stud: any) {
-    debugger
+
      this.onAddStudent();
      this.studentForm = new FormGroup({
       fullName: new FormControl(stud.fullName),
@@ -119,7 +119,7 @@ export class StudentComponent implements OnInit {
     }
   }
   saveStudent() {
-    debugger
+
     console.log(this.studentForm.value);
     this.student.studentId =  this.studentArr.length + 1;
     this.studentArr.push(this.studentForm.value);

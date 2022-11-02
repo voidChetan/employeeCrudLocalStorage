@@ -14,11 +14,11 @@ export class MyInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    debugger;
+
     return next.handle(request).pipe(map(event => {
-      debugger;
+
       if (event instanceof HttpResponse) {
-         debugger;
+
       }
       return event;
   }));

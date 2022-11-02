@@ -23,21 +23,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
  loadCustomer() {
-  debugger
+
   this.accoService.getCustomers().subscribe((res: any) => {
-    debugger
+
   })
  }
 
  upload(event:any) {
-  debugger
+
   const form = new FormData();
   if (event.target.files.length > 0) {
     const file = event.target.files[0];
     const formData = new FormData();
     formData.append('file', file);
     this.accoService.uploadfile(formData).subscribe((res: any) => {
-      debugger
+
     })
   }
 
