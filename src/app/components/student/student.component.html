@@ -6,33 +6,35 @@
     </button>
   </div>
   <div class="card-body">
+    <div class="row pb-3">
+      <div class="col-md-3">
+        <input type="text" class="form-control" placeholder="Candidate" [(ngModel)]="searchObj.CandidateId">
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control" placeholder="Form date" [(ngModel)]="searchObj.FromDate">
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control" placeholder="To date" [(ngModel)]="searchObj.ToDate">
+      </div>
+      <div class="col-md-3">
+       <button class="btn btn-info" (click)="getAllAttendance()">Search</button>
+        </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
-        <table class="table table-bordered">
+        <table [ngClass]="theme" class="table table-bordered">
           <thead>
             <tr>
-              <th><input type="checkbox" [(ngModel)]="isSelectAll" (ngModelChange)="onCheckAll()"></th>
-              <th>Full Name</th>
-              <th>Mobile</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Action</th>
+              <th>Sr.No</th>
+              <th>attendance Date</th>
+              <th>Name</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of studentArr">
-              <td>
-                <input type="checkbox" [(ngModel)]="item.isChecked">
-              </td>
-              <td appPhone>{{item.fullName}}</td>
-              <td>{{item.mobile}}</td>
-              <td appPhone>{{item.email}}</td>
-              <td>{{item.address}}</td>
-              <td class="text-center">
-                <button type="button" appAceess class="btn btn-info btn-sm" (click)="onEdit(item)">Edit</button>&nbsp;
-                <button type="button" appAceess class="btn btn-secondary btn-sm"
-                  (click)="onDelete(item.studentId)">Remove</button>
-              </td>
+            <tr *ngFor="let item of studentArr; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.attendanceDate | date:'dd-MMM-yyyy'}}</td>
+              <td>{{item.candidateName}}</td>
             </tr>
           </tbody>
         </table>
@@ -58,20 +60,19 @@
               <div class="row">
                 <div class="col-md-8">
                   <label class="for-label">Full Name</label>
-                  <input type="text" name="name" class="form-control"
-                    placeholder="Full Name" formControlName="fullName" />
+                  <input type="text" name="name" class="form-control" placeholder="Full Name"
+                    formControlName="fullName" />
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-5">
                   <label class="for-label">Mobile</label>
-                  <input type="text" name="mobile" class="form-control"
-                    placeholder="Mobile Number" formControlName="mobile"/>
+                  <input type="text" name="mobile" class="form-control" placeholder="Mobile Number"
+                    formControlName="mobile" />
                 </div>
                 <div class="col-md-5">
                   <label>Email</label>
-                  <input type="email" name="email" placeholder="Email" class="form-control" formControlName="email"
-                    />
+                  <input type="email" name="email" placeholder="Email" class="form-control" formControlName="email" />
                 </div>
               </div>
               <div class="row">
@@ -84,24 +85,19 @@
             </div>
             <div class="col-md-6" formArrayName="familyDetails">
               <div class="col-md-2">
-                <button class="btn btn-success btn-sm" (click)="addRelation()"
-               >Add</button>
+                <button class="btn btn-success btn-sm" (click)="addRelation()">Add</button>
               </div>
-              <div class="row" *ngFor="let child of famlies.controls; let i = index"
-              formGroupName="{{i}}" >
+              <div class="row" *ngFor="let child of famlies.controls; let i = index" formGroupName="{{i}}">
                 <div class="col-md-4">
                   <label class="for-label">Name</label>
-                  <input type="text" name="mobile" class="form-control" formControlName="name"
-                    />
+                  <input type="text" name="mobile" class="form-control" formControlName="name" />
                 </div>
                 <div class="col-md-4">
                   <label>Relation</label>
-                  <input type="email" name="email"  class="form-control" formControlName="relation"
-                    />
+                  <input type="email" name="email" class="form-control" formControlName="relation" />
                 </div>
                 <div class="col-md-2">
-                  <button class="btn btn-success btn-sm" (click)="removeRelation(i)"
-                 >remove</button>
+                  <button class="btn btn-success btn-sm" (click)="removeRelation(i)">remove</button>
                 </div>
               </div>
             </div>
@@ -114,8 +110,7 @@
               <button class="btn btn-secondary btn-sm">Cancel</button>
             </div>
             <div class="col-md-6 text-center">
-              <button class="btn btn-success btn-sm"
-               (click)="saveStudent()">Save</button>
+              <button class="btn btn-success btn-sm" (click)="saveStudent()">Save</button>
               <button class="btn btn-success btn-sm" (click)="onUpdate()"
                 *ngIf="student.studentId !== 0">Update</button>
             </div>

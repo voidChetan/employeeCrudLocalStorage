@@ -10,18 +10,19 @@ export class RecentUsersComponent implements OnInit {
 
   @Input() userList: any[] = [];
   isLoader: boolean = true;
+  theme: string='';
   colArr = ['name','username','email','phone'];
   constructor(private empSrv: EmpService) {
     setTimeout(() => {
       this.isLoader = false;
     }, 2000);
-    this.empSrv.onThemeChange.subscribe(item => {
-
-
-    })
    }
 
   ngOnInit(): void {
+    this.empSrv.onThemeChange.subscribe(res=>{
+      debugger;
+      this.theme= res;
+    })
   }
 
 }

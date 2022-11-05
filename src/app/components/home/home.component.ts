@@ -7,13 +7,15 @@ import { EmpService } from 'src/app/services/emp.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private useSrv: EmpService) { }
+   activeTheme: string = '';
+  constructor(private empService: EmpService) { }
 
   ngOnInit(): void {
   }
   themeChange(theme: string) {
-    this.useSrv.onThemeChange.next(theme);
+    debugger;
+   this.activeTheme = theme;
+   this.empService.onThemeChange.next(theme);
   }
 
 }

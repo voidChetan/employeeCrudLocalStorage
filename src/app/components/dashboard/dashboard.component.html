@@ -1,11 +1,4 @@
-<input
-            id="file"
 
-            type="file"
-
-            class="form-control"
-
-            (change)="upload($event)">
 <div class="row">
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
@@ -77,6 +70,7 @@
         <div class="card">
             <div class="card-header  bg-secondary">
                 Recent Users
+                <button (click)="isMaxVisible= true">Show Max</button>
             </div>
             <div class="card-body bg-white" >
                  <app-recent-users [userList]="topUsers"></app-recent-users>
@@ -88,7 +82,7 @@
             <div class="card-header bg-secondary">
                 Top Amount Holders
             </div>
-            <div class="card-body bg-white">
+            <div class="card-body bg-white" *ngIf="isMaxVisible">
                 <app-max-users [userList]="topUsers"></app-max-users>
             </div>
         </div>

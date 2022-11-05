@@ -1,13 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-.primary .bg-secondary{
+.primary {
     background-color: gray !important;
     color: white !important;
 }
-.dark .bg-secondary{
+.dark {
     background-color: black !important;
     color: white !important;
 }
-
+.dark td th {
+  background-color: black !important;
+  color: white !important;
+}
 .loader {
     width: 100%;
     height: 75px;

@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
+          <a class="nav-link" routerLink="dashboard">Dashboard</a>
+        </li>
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="ngif">ng If</a>
         </li>
         <li class="nav-item">
@@ -20,18 +23,20 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="template">Template</a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="reactive">reactive</a>
-        </li>
+        </li> -->
          <li class="nav-item">
           <a class="nav-link" routerLink="student">Student</a>
       </li>
       </ul>
-      <!-- <form class="d-flex">
-        <button class="btn btn-secondary" (click)="themeChange('primary')" type="button">Primary</button>
-        <button class="btn btn-secondary" (click)="themeChange('dark')" type="button">Dark</button>
-      </form> -->
+      <form class="d-flex">
+        <button class="btn btn-sm"
+        [ngClass]="activeTheme == 'primary' ? 'btn-primary' : 'btn-secondary'" (click)="themeChange('primary')">Primary</button>&nbsp;&nbsp;
+        <button class="btn btn-sm"
+        [ngClass]="activeTheme == 'dark' ? 'btn-primary' : 'btn-secondary'" (click)="themeChange('dark')">Dark</button>
+      </form>
     </div>
   </div>
 </nav>

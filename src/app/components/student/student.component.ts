@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmpService } from 'src/app/services/emp.service';
 
 @Component({
   selector: 'app-student',
@@ -15,10 +16,15 @@ export class StudentComponent implements OnInit {
     email: '',
     address: ''
   };
+  searchObj: any = {
+    CandidateId: '',
+    FromDate: '',
+    ToDate :''
+  };
   isSelectAll: boolean = false;
-
+  theme: string='';
   studentForm: FormGroup;
-  constructor() {
+  constructor(private empSrv: EmpService) {
     this.studentForm = new FormGroup({
       fullName: new FormControl(""),
       mobile: new FormControl(""),
@@ -35,12 +41,23 @@ export class StudentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
+    this.getAllAttendance();
+    this.empSrv.onThemeChange.subscribe(res=>{
+      debugger;
+      this.theme= res;
+    })
     const localData = localStorage.getItem('studentList');
     if(localData != null) {
-      this.studentArr = JSON.parse(localData);
+     // this.studentArr = JSON.parse(localData);
     }
   }
+
+  getAllAttendance(){
+    this.empSrv.GetAllAttendance(this.searchObj).subscribe((res: any)=>{
+      this.studentArr = res['data'];
+    })
+  }
+
   get famlies() {
     return this.studentForm.get('familyDetails') as FormArray;
   }

@@ -1,13 +1,12 @@
-
-<app-table [colArr]="colArr" [gridData]="userList"></app-table>
-<!-- <table class="table table-bordered table-hover table-sm table-secondary">
+<div >
+  <table [ngClass]="theme" class="table table-bordered table-hover table-sm " >
     <thead>
         <tr>
             <th>Sr No</th>
             <th>Name</th>
             <th>User Name</th>
             <th>Email</th>
-            <th>Phone</th> 
+            <th>Phone</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +16,7 @@
                 <td>{{user.name}}</td>
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.phone}}</td> 
+                <td>{{user.phone}}</td>
             </tr>
         </ng-container>
         <ng-container *ngIf="isLoader">
@@ -29,13 +28,15 @@
                                 <div class="ball"></div>
                                 <div class="ball"></div>
                                 <div class="ball"></div>
-                                <div class="ball"></div> 
+                                <div class="ball"></div>
                             </div>
                         </div>
                     </div>
                 </td>
             </tr>
         </ng-container>
-        
+
     </tbody>
-</table>  -->
+</table>
+
+</div>

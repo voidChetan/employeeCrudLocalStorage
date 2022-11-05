@@ -1,9 +1,9 @@
-<table class="table table-bordered table-hover table-sm table-secondary">
+<table [ngClass]="theme" class="table table-bordered table-hover table-sm">
     <thead>
         <tr>
             <th>Sr No</th>
             <th>Name</th>
-            <th>User Name</th>  
+            <th>User Name</th>
         </tr>
     </thead>
     <tbody>
@@ -11,7 +11,7 @@
             <tr *ngFor="let user of userList;let i= index">
                 <td>{{i+1}}</td>
                 <td>{{user.name}}</td>
-                <td>{{user.username}}</td> 
+                <td>{{user.username}}</td>
             </tr>
         </ng-container>
         <ng-container *ngIf="isLoader">
@@ -23,13 +23,13 @@
                                 <div class="ball"></div>
                                 <div class="ball"></div>
                                 <div class="ball"></div>
-                                <div class="ball"></div> 
+                                <div class="ball"></div>
                             </div>
                         </div>
                     </div>
                 </td>
             </tr>
         </ng-container>
-        
+
     </tbody>
-</table> 
+</table>

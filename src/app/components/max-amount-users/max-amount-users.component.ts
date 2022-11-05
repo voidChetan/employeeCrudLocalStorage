@@ -10,17 +10,18 @@ export class MaxAmountUsersComponent implements OnInit {
 
   @Input() userList: any[] = [];
   isLoader: boolean = true;
+  theme: string='';
   constructor(private empSrv: EmpService) {
     setTimeout(() => {
       this.isLoader = false;
     }, 1000);
-    this.empSrv.onThemeChange.subscribe(item => {
-
-
-    })
    }
 
   ngOnInit(): void {
+    this.empSrv.onThemeChange.subscribe(res=>{
+      debugger;
+      this.theme= res;
+    })
   }
 
 }
