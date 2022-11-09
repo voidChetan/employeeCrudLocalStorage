@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmpService } from 'src/app/services/emp.service';
+import { CardComponent } from 'src/app/widgets/card/card.component';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent implements OnInit, AfterViewInit {
   studentArr: any[] = [];
   student: any = {
     studentId: 0,
@@ -24,6 +25,10 @@ export class StudentComponent implements OnInit {
   isSelectAll: boolean = false;
   theme: string='';
   studentForm: FormGroup;
+
+  @ViewChild ('candidate') candidateTextBox : ElementRef;
+  @ViewChild (CardComponent) cardInstance : CardComponent;
+
   constructor(private empSrv: EmpService) {
     this.studentForm = new FormGroup({
       fullName: new FormControl(""),
@@ -38,18 +43,24 @@ export class StudentComponent implements OnInit {
         })
       ])
     });
-   }
+  }
 
   ngOnInit(): void {
     this.getAllAttendance();
     this.empSrv.onThemeChange.subscribe(res=>{
-      debugger;
       this.theme= res;
     })
     const localData = localStorage.getItem('studentList');
     if(localData != null) {
      // this.studentArr = JSON.parse(localData);
     }
+  }
+
+  ngAfterViewInit() {
+    debugger;
+    const textValue = this.candidateTextBox.nativeElement.value;
+    this.candidateTextBox.nativeElement.style.backgroundColor = 'red';
+    const childValue = this.cardInstance.headerText;
   }
 
   getAllAttendance(){
@@ -81,12 +92,8 @@ export class StudentComponent implements OnInit {
 
     }
   }
-  onAddStudent() {
-
-
-
-
-
+  onAddStudent(data: any) {
+debugger
     const notNull = document.getElementById('studentModel');
     if (notNull != null) {
       notNull.style.display = 'block';
@@ -116,7 +123,7 @@ export class StudentComponent implements OnInit {
   }
   onEdit(stud: any) {
 
-     this.onAddStudent();
+     this.onAddStudent('hh');
      this.studentForm = new FormGroup({
       fullName: new FormControl(stud.fullName),
       mobile: new FormControl(stud.mobile),

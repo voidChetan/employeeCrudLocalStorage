@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header" [ngClass]="cardClass">
+    <div class="row">
+      <div class="col-6">
+         {{headerText}}
+      </div>
+      <div class="col-6 text-end" *ngIf="isAddButtonVisible">
+        <button class="btn btn-sm btn-warning" (click)="onClick()">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <ng-content>
+
+    </ng-content>
+  </div>
+</div>

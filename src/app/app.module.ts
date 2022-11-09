@@ -27,6 +27,7 @@ import { UserLoginComponent } from './components/user/user-login/user-login.comp
 import { CustomInterceptor } from './services/custom.interceptor';
 import { MyInterceptor } from './services/my.interceptor';
 import { AceessDirective } from './directives/aceess.directive';
+import { CardComponent } from './widgets/card/card.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AceessDirective } from './directives/aceess.directive';
     ReactiveComponent,
     StudentComponent,
     UserLoginComponent,
-    AceessDirective
+    AceessDirective,
+    CardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter, forkJoin, map, mergeMap, of, reduce, Subscription } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 import { EmpService } from 'src/app/services/emp.service';
@@ -11,15 +11,37 @@ import { EmpService } from 'src/app/services/emp.service';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
-
   topUsers: any[] = [];
   theme: string = '';
   recentUsers: any[] = [];
   isMaxVisible: boolean = false;
+
+
   constructor(private empSrv: EmpService, private accoService: AccountService) {
   }
 
   ngOnInit(): void {
+    let arr1= [
+
+      {userId: 1, id: 1, title: "delectus aut autem", completed: false}
+      ,
+      {userId: 2, id: 2, title: "quis ut nam facilis et officia qui", completed: false}
+      ,
+      {userId: 3, id: 3, title: "fugiat veniam minus", completed: false}
+      ];
+
+      let arr2= [
+
+      {userId: 2, id: 1, title: "delectus aut autem", completed: false}
+      ,
+      {userId: 4, id: 2, title: "quis ut nam facilis et officia qui", completed: false}
+      ,
+      {userId: 3, id: 3, title: "fugiat veniam minus", completed: false}
+      ];
+
+      var ddd= arr1.filter(a => arr2.some(b => a.userId === b.userId));
+      console.log(ddd);
+
     let arr = of(1, 2, 5, 657, 35);
     arr.subscribe(res => {
       debugger;
