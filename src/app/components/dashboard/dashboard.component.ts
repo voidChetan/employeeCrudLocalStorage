@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { debounceTime, distinctUntilChanged, filter, forkJoin, map, mergeMap, of, reduce, Subscription } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 import { EmpService } from 'src/app/services/emp.service';
@@ -15,9 +16,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   theme: string = '';
   recentUsers: any[] = [];
   isMaxVisible: boolean = false;
+  dasboardDetial: any;
 
+  constructor(private empSrv: EmpService, private accoService: AccountService,
+    private route: ActivatedRoute) {
+      debugger;
+      this.dasboardDetial = this.route.snapshot.data['dashboardData'];
 
-  constructor(private empSrv: EmpService, private accoService: AccountService) {
   }
 
   ngOnInit(): void {
@@ -44,7 +49,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     let arr = of(1, 2, 5, 657, 35);
     arr.subscribe(res => {
-      debugger;
     })
     let test1 = of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     let case1 = test1.pipe(

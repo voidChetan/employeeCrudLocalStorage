@@ -14,6 +14,7 @@ import { TemFormComponent } from './components/topics/tem-form/tem-form.componen
 import { ReactiveComponent } from './components/topics/reactive/reactive.component';
 import { StudentComponent } from './components/student/student.component';
 import { UserLoginComponent } from './components/user/user-login/user-login.component';
+import { DashboardResolverService } from './services/dashboard-resolver.service';
 
 const routes: Routes = [
   {
@@ -30,7 +31,15 @@ const routes: Routes = [
       },
       {
         path:'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        resolve: {
+          dashboardData : DashboardResolverService
+        },
+        title:'Dash-board',
+        data:{
+          icon:'fa fa-user',
+          role:'admin'
+        }
       },
       {
         path:'users',
@@ -66,7 +75,8 @@ const routes: Routes = [
       },
       {
         path:'student',
-        component: StudentComponent
+        component: StudentComponent,
+        title:'Student Page',
       }
     ]
   }
