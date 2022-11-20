@@ -15,6 +15,7 @@ import { ReactiveComponent } from './components/topics/reactive/reactive.compone
 import { StudentComponent } from './components/student/student.component';
 import { UserLoginComponent } from './components/user/user-login/user-login.component';
 import { DashboardResolverService } from './services/dashboard-resolver.service';
+import { Student2Component } from './components/student2/student2.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,11 @@ const routes: Routes = [
       {
         path:'student',
         component: StudentComponent,
+        title:'Student Page',
+      },
+      {
+        path:'student2',
+        component: Student2Component,
         title:'Student Page',
       }
     ]

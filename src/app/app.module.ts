@@ -29,6 +29,7 @@ import { MyInterceptor } from './services/my.interceptor';
 import { AceessDirective } from './directives/aceess.directive';
 import { CardComponent } from './widgets/card/card.component';
 import { AccordionComponent } from './widgets/accordion/accordion.component';
+import { Student2Component } from './components/student2/student2.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AccordionComponent } from './widgets/accordion/accordion.component';
     UserLoginComponent,
     AceessDirective,
     CardComponent,
-    AccordionComponent
+    AccordionComponent,
+    Student2Component
   ],
   imports: [
     BrowserModule,

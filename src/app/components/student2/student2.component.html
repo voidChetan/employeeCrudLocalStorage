@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-12">
+    <table   class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr.No</th>
+          <th>Stud Name </th>
+          <th>Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of studentArr; let i = index">
+          <tr >
+            <td>{{i+1}}</td>
+            <td>{{item.fullName }}</td>
+            <td>{{item.mobile}}</td>
+            <td>
+              <button (click)="onEdit(item.studentId)">Edit</button>
+              <button (click)="onDelete(item.studentId)">Delete</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+<form [formGroup]="studentForm">
+  <!-- Modal body -->
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-8">
+            <label class="for-label">Full Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Full Name"
+              formControlName="fullName" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <label class="for-label">Mobile</label>
+            <input type="text" name="mobile" class="form-control" placeholder="Mobile Number"
+              formControlName="mobile" />
+          </div>
+          <div class="col-md-5">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email" class="form-control" formControlName="email" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <label>Address</label>
+            <textarea name="" class="form-control" rows="3" name="address" formControlName="address"
+              placeholder="Address"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <button class="btn btn-secondary btn-sm">Cancel</button>
+      </div>
+      <div class="col-md-6 text-center">
+        <button *ngIf="studentForm.controls['studentId'].value === 0" class="btn btn-success btn-sm" (click)="saveStudent()">Save</button>
+        <button *ngIf="studentForm.controls['studentId'].value !== 0" class="btn btn-success btn-sm" (click)="saveStudent()">Update</button>
+      </div>
+    </div>
+  </div>
+</form>
