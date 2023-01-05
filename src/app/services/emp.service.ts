@@ -35,7 +35,7 @@ searchUserWithParam(str: string): Observable<any[]> {
     return this.http.get<any[]>("https://jsonplaceholder.typicode.com/todos");
   }
   GetAllAttendance(obj:any): Observable<any[]> {
-    return this.http.post<any[]>("http://onlinetestapi.gerasim.in/api/OnlineTest/GetAllAttendance",obj);
+    return this.http.get<any[]>("http://onlinetestapi.gerasim.in/api/Master/GetAllCustomer");
   }
 
   getTopUsers(): Observable<any[]> {

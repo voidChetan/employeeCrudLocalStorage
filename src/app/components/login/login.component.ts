@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,16 +13,19 @@ export class LoginComponent implements OnInit {
     userName: '',
     password: ''
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router,private http: HttpClient) { }
 
   ngOnInit(): void {
   }
   onLogin() {
-    if(this.loginObj.userName == 'admin' &&  this.loginObj.password == 'admin') {
-      this.router.navigateByUrl('dashboard');
-    } else {
-      alert("Wrong Credentials");
-    }
+
+     const obj = {
+      "EmailId": "admin@gmail.com",
+      "Password": "admin"
+    };
+     this.http.post('http://onlinetestapi.gerasim.in/api/Account',obj).subscribe((m:any)=> {
+       localStorage.setItem('token', m.token);
+     })
   }
 
 

@@ -10,7 +10,7 @@ export class AccordionComponent implements OnInit {
   @Input() template: TemplateRef<any>;
 
   constructor() {
-    debugger;
+
     const data = this.template;
   }
 

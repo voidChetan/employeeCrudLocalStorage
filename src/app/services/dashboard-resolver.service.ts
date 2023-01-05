@@ -11,7 +11,7 @@ export class DashboardResolverService implements Resolve<any> {
   constructor(private http:HttpClient) { }
 
   resolve(): Observable<any>{
-    debugger;
+
     return this.http.get('http://onlinetestapi.gerasim.in/api/OnlineTest/GetDashboardData');
   }
 }

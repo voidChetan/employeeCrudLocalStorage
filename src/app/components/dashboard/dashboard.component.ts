@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, distinctUntilChanged, filter, forkJoin, map, mergeMap, of, reduce, Subscription } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
+import { CommanService } from 'src/app/services/comman.service';
 import { EmpService } from 'src/app/services/emp.service';
 
 @Component({
@@ -18,14 +19,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isMaxVisible: boolean = false;
   dasboardDetial: any;
 
-  constructor(private empSrv: EmpService, private accoService: AccountService,
+  constructor(private empSrv: EmpService,private commanSrv: CommanService, private accoService: AccountService,
     private route: ActivatedRoute) {
-      debugger;
+
       this.dasboardDetial = this.route.snapshot.data['dashboardData'];
 
   }
-
+  onPageScroll() {
+    console.log('Output')
+  }
   ngOnInit(): void {
+    debugger;
+    this.commanSrv.setData('theme',
+     'primary');
+
+
+
+
+
+
     let arr1= [
 
       {userId: 1, id: 1, title: "delectus aut autem", completed: false}
@@ -89,11 +101,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     let users = this.empSrv.getTopUsers();
     let todo = this.empSrv.getTodoList()
     forkJoin([users, todo]).subscribe(res => {
-      debugger;
+
       this.topUsers = res[0];
       this.recentUsers = res[1];
     }, err => {
-      debugger;
+
       console.log('error', err)
     })
   }
@@ -110,7 +122,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       })
     )
       .subscribe(result => {
-        debugger;
+
       })
   }
   //to get different array of object from api responce
@@ -128,7 +140,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .pipe(
         map(x => x.reduce((acc, user) => acc = user.id + acc, 0))
       ).subscribe(res => {
-        debugger;
+
       })
   }
 

@@ -1,7 +1,7 @@
 
-<app-card [headerText]="'Dashboard'" [isAddButtonVisible]="false" [cardClass]="'bg-primary'" >
+<app-card [headerText]="'Dashboard'" appOnScroll (onScrollEvent)="onPageScroll()" [isAddButtonVisible]="false" [cardClass]="'bg-primary'" >
   <div class="row">
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4" appHighlight [color]="'green'">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4" appHighlight  [color]="'red'">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4" appHighlight [color]="'blue'">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4" appHighlight [color]="'yellow'">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -83,7 +83,7 @@
             <div class="card-header bg-secondary">
                 Top Amount Holders
             </div>
-            <div class="card-body bg-white" *ngIf="isMaxVisible">
+            <div class="card-body bg-white"  >
                 <app-max-users [userList]="topUsers"></app-max-users>
             </div>
         </div>

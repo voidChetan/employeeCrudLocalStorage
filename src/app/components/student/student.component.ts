@@ -57,7 +57,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    debugger;
+
     const textValue = this.candidateTextBox.nativeElement.value;
     this.candidateTextBox.nativeElement.style.backgroundColor = 'red';
     const childValue = this.cardInstance.headerText;

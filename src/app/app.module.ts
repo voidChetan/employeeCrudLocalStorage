@@ -30,6 +30,9 @@ import { AceessDirective } from './directives/aceess.directive';
 import { CardComponent } from './widgets/card/card.component';
 import { AccordionComponent } from './widgets/accordion/accordion.component';
 import { Student2Component } from './components/student2/student2.component';
+import { MyhttpInterceptor } from './services/interceptor/myhttp.interceptor';
+import { HightlightDirective } from './directives/hightlight.directive';
+import { OnScrollDirective } from './directives/on-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ import { Student2Component } from './components/student2/student2.component';
     AceessDirective,
     CardComponent,
     AccordionComponent,
-    Student2Component
+    Student2Component,
+    HightlightDirective,
+    OnScrollDirective
   ],
   imports: [
     BrowserModule,
@@ -72,6 +77,10 @@ import { Student2Component } from './components/student2/student2.component';
   },
   {
     provide: HTTP_INTERCEPTORS, useClass: MyInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS, useClass: MyhttpInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]

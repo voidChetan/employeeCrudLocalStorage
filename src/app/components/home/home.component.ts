@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommanService } from 'src/app/services/comman.service';
 import { EmpService } from 'src/app/services/emp.service';
 
 @Component({
@@ -8,12 +9,19 @@ import { EmpService } from 'src/app/services/emp.service';
 })
 export class HomeComponent implements OnInit {
    activeTheme: string = '';
-  constructor(private empService: EmpService) { }
+  constructor(private empService: EmpService,private commsrv: CommanService) { }
 
   ngOnInit(): void {
   }
+
+  setTheme(theme:string) {
+    this.commsrv.emitData(theme);
+  }
+
+
+
   themeChange(theme: string) {
-    debugger;
+
    this.activeTheme = theme;
    this.empService.onThemeChange.next(theme);
   }

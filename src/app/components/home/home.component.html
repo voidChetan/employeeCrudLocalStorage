@@ -35,10 +35,8 @@
     </li>
       </ul>
       <form class="d-flex">
-        <button class="btn btn-sm"
-        [ngClass]="activeTheme == 'primary' ? 'btn-primary' : 'btn-secondary'" (click)="themeChange('primary')">Primary</button>&nbsp;&nbsp;
-        <button class="btn btn-sm"
-        [ngClass]="activeTheme == 'dark' ? 'btn-primary' : 'btn-secondary'" (click)="themeChange('dark')">Dark</button>
+        <button class="btn btn-sm btn-light" (click)="setTheme('bg-primary')" >Primary</button>&nbsp;&nbsp;
+        <button class="btn btn-sm btn-light" (click)="setTheme('bg-dark')">Dark</button>
       </form>
     </div>
   </div>

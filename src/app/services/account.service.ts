@@ -10,7 +10,7 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   onLogin(obj: any) : Observable<any> {
-    return this.http.post('http://storeapi.gerasim.in/api/Account',obj);
+    return this.http.post('http://onlinetestapi.gerasim.in/api/Account',obj);
   }
   getCustomers() : Observable<any> {
 
